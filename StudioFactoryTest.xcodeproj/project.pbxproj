@@ -15,13 +15,15 @@
 		C1DB0E6A19264A490066A1B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DB0E6919264A490066A1B5 /* AppDelegate.m */; };
 		C1DB0E6D19264A490066A1B5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1DB0E6B19264A490066A1B5 /* Main_iPhone.storyboard */; };
 		C1DB0E7019264A490066A1B5 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1DB0E6E19264A490066A1B5 /* Main_iPad.storyboard */; };
-		C1DB0E7319264A490066A1B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DB0E7219264A490066A1B5 /* ViewController.m */; };
 		C1DB0E7519264A490066A1B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1DB0E7419264A490066A1B5 /* Images.xcassets */; };
 		C1DB0E7C19264A490066A1B5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DB0E7B19264A490066A1B5 /* XCTest.framework */; };
 		C1DB0E7D19264A490066A1B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DB0E5919264A490066A1B5 /* Foundation.framework */; };
 		C1DB0E7E19264A490066A1B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DB0E5D19264A490066A1B5 /* UIKit.framework */; };
 		C1DB0E8619264A490066A1B5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1DB0E8419264A490066A1B5 /* InfoPlist.strings */; };
 		C1DB0E8819264A490066A1B5 /* StudioFactoryTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DB0E8719264A490066A1B5 /* StudioFactoryTestTests.m */; };
+		C1DB0E9319264AA10066A1B5 /* ListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DB0E9219264AA10066A1B5 /* ListTableViewController.m */; };
+		C1DB0E97192940790066A1B5 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DB0E96192940790066A1B5 /* DetailsViewController.m */; };
+		C1DB0E9A192B8BE90066A1B5 /* AddProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DB0E99192B8BE90066A1B5 /* AddProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,14 +49,18 @@
 		C1DB0E6919264A490066A1B5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C1DB0E6C19264A490066A1B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		C1DB0E6F19264A490066A1B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		C1DB0E7119264A490066A1B5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C1DB0E7219264A490066A1B5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C1DB0E7419264A490066A1B5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C1DB0E7A19264A490066A1B5 /* StudioFactoryTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudioFactoryTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DB0E7B19264A490066A1B5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C1DB0E8319264A490066A1B5 /* StudioFactoryTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StudioFactoryTestTests-Info.plist"; sourceTree = "<group>"; };
 		C1DB0E8519264A490066A1B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C1DB0E8719264A490066A1B5 /* StudioFactoryTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudioFactoryTestTests.m; sourceTree = "<group>"; };
+		C1DB0E9119264AA10066A1B5 /* ListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListTableViewController.h; path = StudioFactoryTest/ListTableViewController.h; sourceTree = "<group>"; };
+		C1DB0E9219264AA10066A1B5 /* ListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListTableViewController.m; path = StudioFactoryTest/ListTableViewController.m; sourceTree = "<group>"; };
+		C1DB0E95192940790066A1B5 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailsViewController.h; path = StudioFactoryTest/DetailsViewController.h; sourceTree = "<group>"; };
+		C1DB0E96192940790066A1B5 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailsViewController.m; path = StudioFactoryTest/DetailsViewController.m; sourceTree = "<group>"; };
+		C1DB0E98192B8BE90066A1B5 /* AddProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddProfileViewController.h; path = StudioFactoryTest/AddProfileViewController.h; sourceTree = "<group>"; };
+		C1DB0E99192B8BE90066A1B5 /* AddProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddProfileViewController.m; path = StudioFactoryTest/AddProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,9 +124,8 @@
 				C1DB0E6919264A490066A1B5 /* AppDelegate.m */,
 				C1DB0E6B19264A490066A1B5 /* Main_iPhone.storyboard */,
 				C1DB0E6E19264A490066A1B5 /* Main_iPad.storyboard */,
-				C1DB0E7119264A490066A1B5 /* ViewController.h */,
-				C1DB0E7219264A490066A1B5 /* ViewController.m */,
 				C1DB0E7419264A490066A1B5 /* Images.xcassets */,
+				C1DB0E94192666E40066A1B5 /* ViewController */,
 				C1DB0E6019264A490066A1B5 /* Supporting Files */,
 			);
 			path = StudioFactoryTest;
@@ -153,6 +158,20 @@
 				C1DB0E8419264A490066A1B5 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C1DB0E94192666E40066A1B5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C1DB0E98192B8BE90066A1B5 /* AddProfileViewController.h */,
+				C1DB0E99192B8BE90066A1B5 /* AddProfileViewController.m */,
+				C1DB0E95192940790066A1B5 /* DetailsViewController.h */,
+				C1DB0E96192940790066A1B5 /* DetailsViewController.m */,
+				C1DB0E9119264AA10066A1B5 /* ListTableViewController.h */,
+				C1DB0E9219264AA10066A1B5 /* ListTableViewController.m */,
+			);
+			name = ViewController;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,9 +272,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1DB0E7319264A490066A1B5 /* ViewController.m in Sources */,
+				C1DB0E97192940790066A1B5 /* DetailsViewController.m in Sources */,
 				C1DB0E6A19264A490066A1B5 /* AppDelegate.m in Sources */,
 				C1DB0E6619264A490066A1B5 /* main.m in Sources */,
+				C1DB0E9319264AA10066A1B5 /* ListTableViewController.m in Sources */,
+				C1DB0E9A192B8BE90066A1B5 /* AddProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +491,7 @@
 				C1DB0E8D19264A490066A1B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C1DB0E8E19264A490066A1B5 /* Build configuration list for PBXNativeTarget "StudioFactoryTestTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +500,7 @@
 				C1DB0E9019264A490066A1B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
