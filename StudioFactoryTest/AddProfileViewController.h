@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddProfileViewController : UIViewController
+@interface AddProfileViewController : UIViewController< UINavigationControllerDelegate,UIImagePickerControllerDelegate, UITextFieldDelegate,UITextViewDelegate>
+
+@property (nonatomic, strong) UIImage * chosenPhoto;
+@property (nonatomic, strong) NSString * accountName;
+@property (nonatomic, strong) NSString * discription;
 
 @end
