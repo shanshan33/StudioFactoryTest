@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListTableViewController.h"
 
 @interface AddProfileViewController : UIViewController< UINavigationControllerDelegate,UIImagePickerControllerDelegate, UITextFieldDelegate,UITextViewDelegate>
 
 @property (nonatomic, strong) UIImage * chosenPhoto;
 @property (nonatomic, strong) NSString * accountName;
 @property (nonatomic, strong) NSString * discription;
+@property (nonatomic, strong) ListTableViewController * listTableVC;
 
 @end

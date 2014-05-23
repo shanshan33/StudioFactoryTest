@@ -12,7 +12,7 @@
 
 
 @property (nonatomic,strong) NSMutableDictionary * result;
-@property (nonatomic,strong) NSArray  * names;
+@property (nonatomic,strong) NSMutableArray  * names;
 @property (nonatomic,strong) UIImage * photo;
 
 

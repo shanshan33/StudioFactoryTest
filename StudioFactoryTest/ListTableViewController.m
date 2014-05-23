@@ -23,6 +23,7 @@
 {
     [super viewDidLoad];
     [self getResultDictionary];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

@@ -20,6 +20,7 @@
 
 @implementation AddProfileViewController
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,8 +34,8 @@
 {
     self.addAccountTextField.placeholder = @"Input Your Name";
     self.addDiscriptionTextView.editable = YES;
+    self.addDiscriptionTextView.delegate = self;
     [super viewDidLoad];
-    [self.addDiscriptionTextView resignFirstResponder];
 
 }
 
@@ -42,23 +43,25 @@
 #pragma mark - 
 #pragma mark UITextField
 
-- (void)textFieldReturnEditing:(UITextField *)textField
+- (IBAction)textFieldDidEndOnExit:(id)sender
 {
-    [textField resignFirstResponder];
+    [sender resignFirstResponder];
+//    self.addAccountTextField.text = self.accountName;
 }
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-{
-    return YES;
-}      
-
-
 
 
 #pragma mark - 
 #pragma mark UITextViewDelegate
 
-
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
 
 #pragma mark -
 #pragma mark UIImagePickerController Delegate
@@ -99,6 +102,19 @@
 - (void)displayChosenPhoto:(UIImage *)image
 {
     self.chosenPhotoImageView.image  = image;
+}
+
+
+#pragma mark -
+#pragma mark Actions 
+
+- (IBAction)commitNewAccount:(id)sender {
+    
+    self.accountName = self.addAccountTextField.text;
+    self.discription = self.addDiscriptionTextView.text;
+    
+    [self.listTableVC.names addObject:self.accountName]; 
+    
 }
 
 @end
