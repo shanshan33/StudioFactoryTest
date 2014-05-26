@@ -112,10 +112,7 @@
     
     self.accountName = self.addAccountTextField.text;
     self.discription = self.addDiscriptionTextView.text;
-    
-// shouldn't add arry here should sent to json.
-    [self.listTableVC.names addObject:self.accountName];
-    NSLog(@"%i",[self.listTableVC.names count]);
+
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"New Account"
                                                     message: @"Your Profile Add Success!"
@@ -123,50 +120,80 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+    [self ConnectionToUrl];
+    
+//    [self performSegueWithIdentifier:@"back to list" sender:self];
     
 }
 
-- (NSMutableDictionary *)fetchJsonResultFromURL
+- ( void)ConnectionToUrl
 {
-    NSData * jsonResult = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.mystudiofactory.com/trombi/"]]];
-    NSMutableDictionary * result = [NSJSONSerialization JSONObjectWithData:jsonResult
-                                                  options:0
-                                                    error:NULL];
-    return result;
-    
-    NSDictionary * jsonDictionary = [NSDictionary dictionaryWithObject:self.accountName
-                                                       forKey:@"name"];
-    
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
-                                                       options:NSJSONWritingPrettyPrinted
-                                                         error:NULL];
-    if (!jsonData) {
-        //Deal with error
-    } else {
-        NSString * jsonRequest = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
-    
-    NSLog(@"jsonRequest is %@", jsonRequest);
-    
-    NSURL *url = [NSURL URLWithString:@"https://xxxxxxx.com/questions"];
+    NSURL *url = [NSURL URLWithString:@"http://dev.mystudiofactory.com/trombi/"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     
+    NSDictionary * jsonDictionary = [NSDictionary dictionaryWithObject:self.accountName forKey:@"name"];
+    NSError *error;
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted error:&error];
     
-    NSData *requestData = [jsonRequest dataUsingEncoding:NSUTF8StringEncoding];
+//    NSData *requestData = [self.accountName dataUsingEncoding:NSUTF8StringEncoding];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody: requestData];
+    [request setHTTPBody: jsonData];
     
     NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
-    
+    if (connection) {
+        
+        self.receivedData = [NSMutableData data];
 
+        
+        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.mystudiofactory.com/trombi/"]]];
+        
+        NSMutableDictionary * result = [NSJSONSerialization JSONObjectWithData:data
+                                                                       options:0
+                                                                         error:NULL];
+        self.nameArray = [result valueForKeyPath:@"list.name"];
+
+    }
 }
 
+#pragma mark -
+#pragma mark NSUrlConnectionDelegate 
+
+-(void)connection:(NSConnection*)conn didReceiveResponse:(NSURLResponse *)response
+{
+    if (self.receivedData == NULL) {
+        self.receivedData = [[NSMutableData alloc] init];
+    }
+    [self.receivedData setLength:0];
+    NSLog(@"didReceiveResponse: responseData length:(%d)", _receivedData.length);
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [self.receivedData appendData:data];
+}
+
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"Connection failed! Error - %@ %@",
+          [error localizedDescription],
+          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"Succeeded! Received %d bytes of data",[self.receivedData length]);
+    
+    NSString *responseText = [[NSString alloc] initWithData:self.receivedData encoding: NSASCIIStringEncoding];
+    NSLog(@"Response: %@", responseText);
+    
+    NSString *newLineStr = @"\n";
+    responseText = [responseText stringByReplacingOccurrencesOfString:@"<br />" withString:newLineStr];
+    
+}
 
 
 @end
