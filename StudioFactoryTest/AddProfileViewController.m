@@ -157,6 +157,7 @@
                                                                        options:0
                                                                          error:NULL];
         self.nameArray = [result valueForKeyPath:@"list.name"];
+        [self.nameArray addObject:self.accountName];
 
     }
 }
