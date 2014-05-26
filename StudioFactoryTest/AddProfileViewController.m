@@ -113,8 +113,60 @@
     self.accountName = self.addAccountTextField.text;
     self.discription = self.addDiscriptionTextView.text;
     
-    [self.listTableVC.names addObject:self.accountName]; 
+// shouldn't add arry here should sent to json.
+    [self.listTableVC.names addObject:self.accountName];
+    NSLog(@"%i",[self.listTableVC.names count]);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"New Account"
+                                                    message: @"Your Profile Add Success!"
+                                                   delegate: nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
     
 }
+
+- (NSMutableDictionary *)fetchJsonResultFromURL
+{
+    NSData * jsonResult = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.mystudiofactory.com/trombi/"]]];
+    NSMutableDictionary * result = [NSJSONSerialization JSONObjectWithData:jsonResult
+                                                  options:0
+                                                    error:NULL];
+    return result;
+    
+    NSDictionary * jsonDictionary = [NSDictionary dictionaryWithObject:self.accountName
+                                                       forKey:@"name"];
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:NULL];
+    if (!jsonData) {
+        //Deal with error
+    } else {
+        NSString * jsonRequest = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    
+    NSLog(@"jsonRequest is %@", jsonRequest);
+    
+    NSURL *url = [NSURL URLWithString:@"https://xxxxxxx.com/questions"];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    
+    
+    NSData *requestData = [jsonRequest dataUsingEncoding:NSUTF8StringEncoding];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody: requestData];
+    
+    NSURLConnection *connection = [[NSURLConnection alloc]initWithRequest:request delegate:self];
+    
+
+}
+
+
 
 @end
